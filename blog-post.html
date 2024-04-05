@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>TDD vs.  BDD : Quality in SDLC</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Template">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="favicon.ico"> 
+    
+    <!-- FontAwesome JS-->
+	<script defer src="assets/fontawesome/js/all.min.js"></script>
+    
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="assets/plugins/highlight/styles/monokai-sublime.css">
+    
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme-3.css">
+    
+
+</head> 
+
+<body>
+    
+    <header class="header text-center">	    
+	    <h1 class="blog-name pt-lg-4 mb-0"><a class="no-text-decoration" href="index.html">Sourav's Blog</a></h1>
+        
+	    <nav class="navbar navbar-expand-lg navbar-dark" >
+           
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div id="navigation" class="collapse navbar-collapse flex-column" >
+				<div class="profile-section pt-3 pt-lg-0">
+				    <img class="profile-image mb-3 rounded-circle mx-auto" src="assets/images/Logo design (1).png" alt="image" >			
+					
+					<div class="bio mb-3">Hi, my name is Sourav Dhiman. Experienced DevOps enthusiast from India with a passion for technology and driving automation. Proven abilities in a wide range of technical areas. Eager to learn, contribute, and make a difference in the DevOps community.<br><a href="about.html">Find out more about me</a></div><!--//bio-->
+					<ul class="social-list list-inline py-3 mx-auto">
+			            <li class="list-inline-item"><a href="https://www.linkedin.com/in/dsourav155/"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+						<li class="list-inline-item"><a href="https://github.com/dsourav155"><i class="fab fa-github-alt fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="https://twitter.com/d_sourav156"><i class="fab fa-twitter fa-fw"></i></a></li>
+			        </ul><!--//social-list-->
+			        <hr> 
+				</div><!--//profile-section-->
+				
+				<ul class="navbar-nav flex-column text-start">
+					<li class="nav-item">
+					    <a class="nav-link" href="index.html"><i class="fas fa-home fa-fw me-2"></i>Blog Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+					    <a class="nav-link active" href="blog-post.html"><i class="fas fa-bookmark fa-fw me-2"></i>Latest Blog</a>
+					</li>
+					<li class="nav-item">
+					    <a class="nav-link" href="about.html"><i class="fas fa-user fa-fw me-2"></i>About Me</a>
+					</li>
+				</ul>
+				
+				<div class="my-2 my-md-3">
+					
+				    <a class="btn btn-primary" href="https://themes.3rdwavemedia.com/" target="_blank">Get in Touch</a>
+				    
+				</div>
+			</div>
+		</nav>
+    </header>
+    
+    <div class="main-wrapper">
+	    
+	    <article class="blog-post px-3 py-5 p-md-5">
+		    <div class="container single-col-max-width">
+			    <header class="blog-post-header">
+				    <h2 class="title mb-2">TDD vs.  BDD : Quality in SDLC</h2>
+				    <div class="meta mb-3"><span class="date">Published April 5, 2023</span><span class="time">5 min read</span></div>
+			    </header>
+			    
+			    <div class="blog-post-body">
+				    <figure class="blog-banner">
+				        <a href="#"><img class="img-fluid" src="assets/images/blog/Functions Machines presentation (1).png" alt="image"></a>
+				        <!--<figcaption class="mt-2 text-center image-caption">Image Credit: <a class="theme-link" href="https://made4dev.com?ref=devblog" target="_blank">made4dev.com (Premium Programming T-shirts)</a></figcaption>-->
+				    </figure>
+					<h2 class="mt-5 mb-3">Introduction</h2>
+				    <p>Test-Driven Development (TDD) and Behavior-Driven Development (BDD) have become essential staples in modern software development. These iterative methodologies elevate code quality, foster collaboration, and streamline projects by emphasizing tests and feedback as an integral part of the development cycle. Let's peep deeper into TDD and BDD, their use-case, strengths and real-life scenarios. </p>
+				    
+				    <h2 class="mt-5 mb-3">Test-Driven Development (TDD)</h2>
+				    <p>TDD flips the traditional development model on its head. Here's the core process: </p>
+					<ol class="mb-5">
+						<li class="mb-2"><b>Write a Failing Test:</b> Before implementing a feature, meticulously design a test case that will initially fail because the functionality doesn't exist. This forces you to define the desired outcome.</li>
+						<li class="mb-2"><b>Write Just Enough Code:</b> Focus solely on writing the minimum amount of code necessary to make the test pass. Resist the urge to over-engineer solutions.</li>
+						<li class="mb-2"><b>Refactor:</b> Clean up, restructure, and optimize the code, ensuring it remains readable and maintainable. This step is crucial for code health.</li>
+					  </ol>
+					  <h3 class="mt-5 mb-3">TDD Cycle Diagram</h3>
+					  <figure class="blog-banner">
+				        <a href="#"><img class="img-fluid" src="assets/images/blog/inblog/tddcycle.png" alt="image"></a>
+				        <figcaption class="mt-2 text-center image-caption">TDD cycle with Red > Green > Refactor phases <a class="theme-link" href="#" target="_blank"></a></figcaption>
+				    </figure>
+				    
+				    <h3 class="mt-5 mb-3">Real-World TDD Scenario</h3>
+				    <p>Imagine developing a simple calculator. A TDD approach would look like this:</p>
+				    <ol class="mb-5">
+						<li class="mb-2"><b>Test:</b> Write a test case like test_addition() that asserts whether calculator.add(2, 3) equals 5. The test will initially fail.</li>
+						<li class="mb-2"><b>Code:</b> Implement the basic add method in the calculator class to make the test pass.</li>
+						<li class="mb-2"><b>Refactor:</b> Review the code for conciseness and readability.</li>
+					</ol>
+
+				    <h2 class="my-3">Benefits of TDD</h2>
+					<ul>
+						<li><b>Enhanced Code Design:</b> TDD pushes developers to think critically about functionality, leading to better code structure.</li>
+						<li><b>Quicker Bug Identification:</b> The rapid feedback loop uncovers bugs earlier in the development process.</li>
+						<li><b>Regression Prevention:</b> An established test suite prevents new code from breaking existing features.</li>
+						<li><b>Developer Confidence:</b> Thorough testing boosts developer confidence during development.</li>
+						<li><b>Code Test Coverage:</b> Ensures every line / conditions are tested including error scenarios.</li>
+					</ul>
+					<hr style="height: 10px; width: 1px;" />
+
+
+
+					<h2 class="my-3">Behavior-Driven Development (BDD)</h2>
+					<p>BDD evolves from TDD, emphasizing collaboration between Developers and Testers and focusing agreement on user behavior. It formalizes requirements as executable specifications using a human-readable language like Gherkin. Gherkin uses keywords like Given, When, Then, And to describe scenarios as shown below: </p>
+
+					<h3 class="mb-3">Example BDD Scenario (Gherkin Syntax):</h3>
+					<p><b>Gherkin</b></p>
+					<a href="#"><img class="img-fluid" src="assets/images/blog/inblog/bddcode1.png" alt="image"></a>
+					<figcaption class="mt-2 text-center image-caption">Features <a class="theme-link" href="#" target="_blank"></a></figcaption>
+					<a href="#"><img class="img-fluid" src="assets/images/blog/inblog/bddcode2.png" alt="image"></a>
+					<figcaption class="mt-2 text-center image-caption">Step Defination <a class="theme-link" href="#" target="_blank"></a></figcaption>
+					<a href="#"><img class="img-fluid" src="assets/images/blog/inblog/bddcode3.png" alt="image"></a>
+					<figcaption class="mt-2 text-center image-caption">Result after Testing <a class="theme-link" href="#" target="_blank"></a></figcaption>
+				    
+				    <h3 class="mt-5 mb-3">BDD Process</h3>
+					<ol class="mb-5">
+						<li class="mb-2"><b>Define Behavior:</b> Product owners, developers and testers collaborate to describe desired system behaviors in the form of scenarios.</li>
+						<li class="mb-2"><b>Automate Scenarios:</b> Scenarios are translated into automated tests using tools like Cucumber.</li>
+						<li class="mb-2"><b>Iterative Development:</b> Developers implement features to make the scenarios pass, closely aligning the code with the defined behavior.</li>
+					</ol>
+
+					<h3 class="mt-5 mb-3">Real-World BDD Scenario</h3>
+				    <p>Let's consider an e-commerce application: </p>
+					<ol class="mb-5">
+						<li class="mb-2"><b>Behavior:</b> A team defines scenarios for adding products to a cart, handling out-of-stock items and applying discounts.</li>
+						<li class="mb-2"><b>Automation:</b> The scenarios are converted into tests.</li>
+						<li class="mb-2"><b>Development:</b> Developers write code to satisfy the behavior described in the tests.</li>
+					</ol>
+
+					<h2 class="my-3">Benefits of BDD</h2>
+					<ul>
+						<li><b>Shared Language:</b> BDD's almost native natural language style bridges the gap between technical and non-technical stakeholders.</li>
+						<li><b>Customer Focus:</b> BDD keeps the emphasis on meeting real customer needs.</li>
+						<li><b>Living Documentation:</b> The scenarios serve as up-to-date documentation that reflects system behavior.</li>
+						<li><b>Early Feedback:</b> Frequent testing enables quick adjustments based on feedback. </li>
+					</ul>
+
+					<h2 class="mt-5 mb-3">Difference between TDD vs. BDD</h2>
+					<table class="table table-striped my-5">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Feature</th>
+								<th scope="col">TDD</th>
+								<th scope="col">BDD</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">1</th>
+								<td>Focus</td>
+								<td>Technical implimentation</td>
+								<td>User-Centric behaviour</td>
+							</tr>
+							<tr>
+								<th scope="row">2</th>
+								<td>Language</td>
+								<td>Programming Language-Specific</td>
+								<td>Natural Language using Gherkin</td>
+							</tr>
+							<tr>
+								<th scope="row">3</th>
+								<td>Scope</td>
+								<td>Unit tests</td>
+								<td>Feature-level tests</td>
+							</tr>
+							<tr>
+								<th scope="row">3</th>
+								<td>Participants</td>
+								<td>Primarily developers</td>
+								<td>Developers, testers, product owners</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 class="mt-5 mb-3">When to Choose TDD, BDD or Both</h3>
+					<ul>
+						<li><b>TDD:</b> Ideal for projects with high technical complexity or where the requirements are well understood.</li>
+						<li><b>BDD:</b> Excels in scenarios with strong user-facing aspects or complex business logic.</li>
+						<li><b>Combined:</b> These methodologies work flawlessly together, with TDD addressing the nuts and bolts, while BDD ensures the overall system aligns with user expectations.</li>
+					</ul>
+
+					<h3 class="mt-5 mb-3">Success Criteria</h3>
+					<p>A good quality software artifact / component should pass various quality standards defined in a central place like SonarQube ensuring adherence of good software development practices. </p>
+					<p>The below mentioned screenshot shows good coverage and zero code smell as a passing criteria achieved via TDD and BDD approach:</p>
+
+					<a href="#"><img class="img-fluid" src="assets/images/blog/inblog/testscenario.png" alt="image"></a>
+
+					<h2 class="mt-5 mb-3">Conclusion</h2>
+					<p>TDD and BDD offer a path towards a more collaborative and user-centered approach to development. Are you ready to take your software to the next level? Consider incorporating these techniques into your next project. Let me know in the comments how these methodologies have transformed your development process!</p>
+
+
+					<h5 class="mb-3">For More:</h5>
+
+
+					<style>
+						.libutton {
+						  display: flex;
+						  flex-direction: column;
+						  justify-content: center;
+						  padding: 7px;
+						  text-align: center;
+						  outline: none;
+						  text-decoration: none !important;
+						  color: #ffffff !important;
+						  width: 200px;
+						  height: 32px;
+						  border-radius: 16px;
+						  background-color: #0A66C2;
+						  font-family: "SF Pro Text", Helvetica, sans-serif;
+						}
+					  </style>
+
+
+				  <a class="libutton" href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7044890431091851264" target="_blank">Subscribe on LinkedIn</a>
+
+					<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7176265041002815488" height="803" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+					
+				   
+			    </div>
+				    
+				
+				<nav class="blog-nav nav nav-justified my-5">
+				  <a class="nav-link-prev nav-item nav-link rounded-left" href="#">Previous<i class="arrow-prev fas fa-long-arrow-alt-left"></i></a>
+				  <a class="nav-link-next nav-item nav-link rounded-right" href="#">Next<i class="arrow-next fas fa-long-arrow-alt-right"></i></a>
+				</nav>
+				
+				<div class="blog-comments-section">
+					<div id="disqus_thread"></div>
+					<script>
+					    /**
+					     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT 
+					     *  THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR 
+					     *  PLATFORM OR CMS.
+					     *  
+					     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: 
+					     *  https://disqus.com/admin/universalcode/#configuration-variables
+					     */
+					    /*
+					    var disqus_config = function () {
+					        // Replace PAGE_URL with your page's canonical URL variable
+					        this.page.url = PAGE_URL;  
+					        
+					        // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+					        this.page.identifier = PAGE_IDENTIFIER; 
+					    };
+					    */
+					    
+					    (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+					        var d = document, s = d.createElement('script');
+					        
+					        // IMPORTANT TODO: Replace 3wmthemes with your forum shortname!
+					        s.src = 'https://3wmthemes.disqus.com/embed.js';
+					        
+					        s.setAttribute('data-timestamp', +new Date());
+					        (d.head || d.body).appendChild(s);
+					    })();
+					</script>
+					<noscript>
+					    Please enable JavaScript to view the 
+					    <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+					        comments powered by Disqus.
+					    </a>
+					</noscript>
+				</div><!--//blog-comments-section-->
+				
+		    </div><!--//container-->
+	    </article>
+	
+	    
+	    <footer class="footer text-center py-2 theme-bg-dark">
+		   
+	        <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+            <small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart" style="color: #fb866a;"></i> by <a href="#" target="_blank">Sourav Dhiman</a></small>
+		   
+	    </footer>
+    
+    </div><!--//main-wrapper-->
+    
+
+        
+       
+    <!-- Javascript -->          
+    <script src="assets/plugins/popper.min.js"></script> 
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+
+    <!-- Page Specific JS -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/blog.js"></script> 
+    
+
+</body>
+</html> 
+
+<!-- code snippet
+<pre>
+	<code>
+function $initHighlight(block, cls) {
+try {
+if (cls.search(/\bno\-highlight\b/) != -1)
+return process(block, true, 0x0F) +
+` class="${cls}"`;
+} catch (e) {
+/* handle exception */
+}
+for (var i = 0 / 2; i < classes.length; i++) {
+if (checkCondition(classes[i]) === undefined)
+console.log('undefined');
+}
+}
+
+export  $initHighlight;
+	</code>
+	-->
+
+<!-- quote snippet
+	<blockquote class="blockquote m-lg-5 py-3   ps-4 px-lg-5">
+		<p class="mb-2">You might not think that programmers are artists, but programming is an extremely creative profession. It's logic-based creativity.</p>
+		<footer class="blockquote-footer mt-0">John Romero</footer>
+	</blockquote>
+	-->
+
+	<!-- table snippet
+	<table class="table table-striped my-5">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">First</th>
+				<th scope="col">Last</th>
+				<th scope="col">Handle</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th scope="row">1</th>
+				<td>Mark</td>
+				<td>Otto</td>
+				<td>@mdo</td>
+			</tr>
+			<tr>
+				<th scope="row">2</th>
+				<td>Jacob</td>
+				<td>Thornton</td>
+				<td>@fat</td>
+			</tr>
+			<tr>
+				<th scope="row">3</th>
+				<td>Larry</td>
+				<td>the Bird</td>
+				<td>@twitter</td>
+			</tr>
+		</tbody>
+	</table>
+	-->
+
+<!-- youtube snippet
+	<div class="ratio ratio-16x9">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/1nxSE0R27Gg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>					
+	 </div>
+	 -->
